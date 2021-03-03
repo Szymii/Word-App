@@ -13,8 +13,12 @@ const StyledBtn = styled.button`
   }
 `;
 
-const IconBtn = ({ icon, ...props }) => {
-  return <StyledBtn {...props}>{icon || <TrashIcon />}</StyledBtn>;
+const DeleteBtn = ({ ...props }) => {
+  return (
+    <StyledBtn {...props}>
+      <TrashIcon />
+    </StyledBtn>
+  );
 };
 
-export default IconBtn;
+export default DeleteBtn;
