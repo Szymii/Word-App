@@ -1,8 +1,11 @@
 import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Header from '../components/atoms/Header/Header';
 import Navigation from '../components/molecules/Navigation/Navigation';
+import AddWords from '../components/organisms/Add-word/AddWords';
+
+import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import { theme } from '../styles/theme';
 
@@ -24,7 +27,7 @@ function App() {
               <>D</>
             </Route>
             <Route path="/add-word">
-              <>U</>
+              <AddWords />
             </Route>
             <Route path="/">
               <>P</>
