@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Form, Title } from './AddWords.styles';
 import FormField from '../../molecules/FormField/FormField';
-import DeleteBtn from '../../atoms/DeleteBtn/DeleteBtn';
-import AddBtn from '../../atoms/AddBtn/AddBtn';
+import IconBtn from '../../atoms/IconBtn/IconBtn';
 import { Input } from '../../atoms/Input/Input';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
 
+import { FaTrash as TrashIcon } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
+
 const AddWords = () => {
-  const [meaning, setMeaning] = useState(['', '']);
+  const [meaning, setMeaning] = useState(['']);
   const [word, setWord] = useState('');
 
   const handleMeaningChange = (e, i) => {
@@ -22,7 +24,9 @@ const AddWords = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(word, meaning);
+    localStorage.setItem(word, JSON.stringify(meaning));
+    setMeaning(['']);
+    setWord('');
   };
 
   const handleAdd = () => {
@@ -34,12 +38,9 @@ const AddWords = () => {
   };
 
   const handleDelete = (i) => {
-    console.log(i);
-
     if (meaning.length > 1) {
       const value = [...meaning];
-      const removed = value.splice(i, 1);
-      console.log(i, removed);
+      value.splice(i, 1);
       setMeaning(value);
     }
   };
@@ -65,8 +66,12 @@ const AddWords = () => {
             value={value}
             onChange={(e) => handleMeaningChange(e, i)}
           />
-          <DeleteBtn type="button" onClick={() => handleDelete(i)} />
-          <AddBtn type="button" onClick={handleAdd} />
+          <IconBtn type="button" onClick={() => handleDelete(i)}>
+            <TrashIcon />
+          </IconBtn>
+          <IconBtn type="button" onClick={handleAdd}>
+            <FaPlus />
+          </IconBtn>
         </FormField>
       ))}
       <ConfirmBtn type="submit">Confirm</ConfirmBtn>

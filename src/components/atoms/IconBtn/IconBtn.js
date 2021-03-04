@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FaTrash as TrashIcon } from 'react-icons/fa';
 
 const StyledBtn = styled.button`
   border: none;
@@ -13,12 +12,8 @@ const StyledBtn = styled.button`
   }
 `;
 
-const DeleteBtn = ({ ...props }) => {
-  return (
-    <StyledBtn {...props}>
-      <TrashIcon />
-    </StyledBtn>
-  );
+const DeleteBtn = ({ children, ...props }) => {
+  return <StyledBtn {...props}>{children}</StyledBtn>;
 };
 
 export default DeleteBtn;
