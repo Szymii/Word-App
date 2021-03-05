@@ -15,16 +15,25 @@ const WordsList = () => {
       });
     });
     setLocalList(items);
-  }, []);
+  }, [setLocalList]);
+
+  const handleDelete = (word) => {
+    const value = [...localList].filter((obj) => obj.word !== word);
+    localStorage.removeItem(word);
+    setLocalList(value);
+  };
 
   return (
-    <>
-      <StyledList>
-        {localList.map(({ word, meaning }) => (
-          <ListItem key={word} word={word} meaning={meaning} />
-        ))}
-      </StyledList>
-    </>
+    <StyledList>
+      {localList.map(({ word, meaning }) => (
+        <ListItem
+          key={word}
+          word={word}
+          meaning={meaning}
+          onClick={handleDelete}
+        />
+      ))}
+    </StyledList>
   );
 };
 

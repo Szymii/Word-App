@@ -5,6 +5,7 @@ import Header from '../components/atoms/Header/Header';
 import Navigation from '../components/molecules/Navigation/Navigation';
 import AddWords from '../components/organisms/Add-word/AddWords';
 import WordList from '../components/organisms/Words-list/WordsList';
+import StorageProvider from '../StorageProvider';
 
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/GlobalStyle';
@@ -23,18 +24,20 @@ function App() {
         <GlobalStyle />
         <Wrapper>
           <Header />
-          <Switch>
-            <Route path="/word-list">
-              <WordList />
-            </Route>
-            <Route path="/add-word">
-              <AddWords />
-            </Route>
-            <Route path="/">
-              <>P</>
-            </Route>
-          </Switch>
-          <Navigation />
+          <StorageProvider>
+            <Switch>
+              <Route path="/word-list">
+                <WordList />
+              </Route>
+              <Route path="/add-word">
+                <AddWords />
+              </Route>
+              <Route path="/">
+                <>Tu kiedyś coś będzie</>
+              </Route>
+            </Switch>
+            <Navigation />
+          </StorageProvider>
         </Wrapper>
       </ThemeProvider>
     </Router>

@@ -19,9 +19,9 @@ const StyledLink = styled.div`
   }
 `;
 
-const NavButton = ({ path, icon }) => {
+const NavButton = ({ path, icon, ...rest }) => {
   return (
-    <StyledLink>
+    <StyledLink {...rest}>
       <Link to={path}>{icon}</Link>
     </StyledLink>
   );

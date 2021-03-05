@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import NavButton from '../../atoms/NavButton/NavButton';
 import { FaPlus, FaHome, FaList } from 'react-icons/fa';
+import { StorageContext } from '../../../StorageProvider';
 
 const StyledNav = styled.nav`
   position: fixed;
@@ -22,9 +23,10 @@ const StyledNav = styled.nav`
 `;
 
 const Navigation = () => {
+  const { handleClear } = useContext(StorageContext);
   return (
     <StyledNav>
-      <NavButton path="/add-word" icon={<FaPlus />} />
+      <NavButton path="/add-word" icon={<FaPlus />} onClick={handleClear} />
       <span></span>
       <NavButton path="/" icon={<FaHome />} />
       <span></span>

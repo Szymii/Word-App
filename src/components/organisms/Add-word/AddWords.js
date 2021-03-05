@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Form, Title } from './AddWords.styles';
 import FormField from '../../molecules/FormField/FormField';
 import IconBtn from '../../atoms/IconBtn/IconBtn';
 import { Input } from '../../atoms/Input/Input';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
+import { StorageContext } from '../../../StorageProvider';
 
 import { FaTrash as TrashIcon } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
 
 const AddWords = () => {
-  const [meaning, setMeaning] = useState(['']);
-  const [word, setWord] = useState('');
+  const { meaning, setMeaning, word, setWord } = useContext(StorageContext);
 
   const handleMeaningChange = (e, i) => {
     const value = [...meaning];
