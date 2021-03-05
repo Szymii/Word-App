@@ -12,12 +12,14 @@ import { GlobalStyle } from '../styles/GlobalStyle';
 import { theme } from '../styles/theme';
 
 const Wrapper = styled.div`
-  min-height: 100vh;
+  position: relative;
+  min-height: ${window.innerHeight}px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.black};
 `;
 
 function App() {
+  console.log(window.innerHeight);
   return (
     <Router>
       <ThemeProvider theme={theme}>

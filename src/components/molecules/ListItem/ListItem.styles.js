@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledLi = styled.li`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 60px;
   gap: 25px;
   padding: 17px 30px;
   margin-top: 25px;
