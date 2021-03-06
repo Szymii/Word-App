@@ -18,15 +18,24 @@ const AddWords = () => {
     setMeaning(value);
   };
 
+  const validate = (word, meaning) => {
+    const regex = /(.|\s)*\S/;
+    if (!regex.test(word)) return false;
+    if (meaning.some((element) => !regex.test(element))) return false;
+    return true;
+  };
+
   const handleWordChange = (e) => {
     setWord(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem(word, JSON.stringify(meaning));
-    setMeaning(['']);
-    setWord('');
+    if (validate(word, meaning)) {
+      localStorage.setItem(word, JSON.stringify(meaning));
+      setMeaning(['']);
+      setWord('');
+    }
   };
 
   const handleAdd = () => {
