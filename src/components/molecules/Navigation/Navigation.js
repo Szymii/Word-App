@@ -10,7 +10,6 @@ const StyledNav = styled.nav`
   height: 65px;
   width: 100%;
   padding: 15px;
-  cursor: pointer;
   background-color: ${({ theme }) => theme.colors.blue};
   display: flex;
   align-items: center;

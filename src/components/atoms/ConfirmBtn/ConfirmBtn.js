@@ -8,4 +8,9 @@ export const ConfirmBtn = styled.button`
   font-size: ${({ theme }) => theme.fontSize.m};
   background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.colors.white};
+  display: flex;
+  align-items: center;
+  svg {
+    margin-left: 20px;
+  }
 `;

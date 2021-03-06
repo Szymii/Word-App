@@ -8,6 +8,7 @@ export const StorageContext = React.createContext({
 const StorageProvider = ({ children }) => {
   const [meaning, setMeaning] = useState(['']);
   const [word, setWord] = useState('');
+  const [lastIndex, setLastIndex] = useState(0);
 
   const handleEdit = (word, meaning) => {
     console.log(word, meaning);
@@ -28,6 +29,8 @@ const StorageProvider = ({ children }) => {
         setMeaning,
         word,
         setWord,
+        lastIndex,
+        setLastIndex,
       }}
     >
       {children}
