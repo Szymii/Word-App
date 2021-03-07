@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { MeaningList } from '../../atoms/MeaningList/MeaningList';
+import MeaningList from '../../atoms/MeaningList/MeaningList';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
 import { Wrapper } from './LernWord.styles';
 import { FaForward } from 'react-icons/fa';
@@ -31,7 +31,7 @@ const LernWords = () => {
 
   const handleChange = () => {
     if (local.length <= lastIndex + 1) {
-      setLastIndex(1);
+      setLastIndex(0);
     } else {
       setLastIndex(lastIndex + 1);
     }

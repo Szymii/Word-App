@@ -5,6 +5,7 @@ export const theme = {
     grey: '#333333',
     lightGrey: '#5B5B5B',
     blue: '#0B9FCE',
+    unactive: '#1C1C1C',
   },
   fontSize: {
     l: '28px',

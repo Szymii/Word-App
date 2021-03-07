@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import { StyledItem } from './MeaningList.styles';
 
-export const MeaningList = styled.div`
-  width: 60%;
-  padding: 5px;
-  margin-top: 30px;
-  text-align: center;
-  background-color: ${({ theme }) => theme.colors.grey};
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSize.m};
-`;
+const MeaningList = ({ children }) => {
+  const [shown, setShown] = useState(true);
+  const handleClick = () => {
+    setShown(!shown);
+  };
+  return (
+    <StyledItem shown={shown} onClick={handleClick}>
+      <>{children}</>
+    </StyledItem>
+  );
+};
+
+export default MeaningList;

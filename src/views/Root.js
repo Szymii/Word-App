@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import Header from '../components/atoms/Header/Header';
-import Navigation from '../components/molecules/Navigation/Navigation';
-import AddWords from '../components/organisms/Add-word/AddWords';
-import WordList from '../components/organisms/Words-list/WordsList';
+import { BrowserRouter as Router } from 'react-router-dom';
 import StorageProvider from '../StorageProvider';
-import LernWords from '../components/organisms/Learn-words/LernWords';
+import Mobile from './Mobile';
+import Desktop from './Desktop';
 
 import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/GlobalStyle';
@@ -22,12 +18,22 @@ const Wrapper = styled.div`
 function App() {
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
+    width: window.innerWidth,
   });
+
+  let view;
+
+  if (dimensions.width < 860) {
+    view = <Mobile />;
+  } else {
+    view = <Desktop />;
+  }
 
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
         height: window.innerHeight,
+        width: window.innerWidth,
       });
     };
 
@@ -38,23 +44,9 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Wrapper height={dimensions.height}>
-          <Header />
-          <StorageProvider>
-            <Switch>
-              <Route path="/word-list">
-                <WordList />
-              </Route>
-              <Route path="/add-word">
-                <AddWords />
-              </Route>
-              <Route path="/">
-                <LernWords />
-              </Route>
-            </Switch>
-            <Navigation />
-          </StorageProvider>
-        </Wrapper>
+        <StorageProvider>
+          <Wrapper height={dimensions.height}>{view}</Wrapper>
+        </StorageProvider>
       </ThemeProvider>
     </Router>
   );
