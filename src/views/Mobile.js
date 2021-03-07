@@ -12,13 +12,13 @@ const Mobile = () => {
     <>
       <Header />
       <Switch>
-        <Route path="/word-list">
+        <Route path="/Word-App/word-list">
           <WordList />
         </Route>
-        <Route path="/add-word">
+        <Route path="/Word-App/add-word">
           <AddWords />
         </Route>
-        <Route path="/">
+        <Route path="/Word-App/">
           <LernWords />
         </Route>
       </Switch>

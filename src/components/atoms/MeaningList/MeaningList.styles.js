@@ -9,6 +9,7 @@ export const StyledItem = styled.div`
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.m};
   position: relative;
+  cursor: pointer;
   &::after {
     ${({ shown }) => {
       if (shown) {

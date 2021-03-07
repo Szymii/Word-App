@@ -12,11 +12,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  p {
-    color: ${({ theme }) => theme.colors.white};
-    font-size: ${({ theme }) => theme.fontSize.l};
-  }
 `;
+const Title = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: bold;
+`;
+
 const ViewWrapper = styled.div`
   width: 25%;
   min-width: 450px;
@@ -28,19 +30,19 @@ const ViewWrapper = styled.div`
 const Desktop = () => {
   return (
     <Wrapper>
-      <p> Word APP</p>
+      <Title> Word APP</Title>
       <Switch>
-        <Route path="/word-list">
+        <Route path="/Word-App/word-list">
           <ViewWrapper>
             <WordList />
           </ViewWrapper>
         </Route>
-        <Route path="/add-word">
+        <Route path="/Word-App/add-word">
           <ViewWrapper>
             <AddWords />
           </ViewWrapper>
         </Route>
-        <Route path="/">
+        <Route path="/Word-App/">
           <ViewWrapper>
             <LernWords />
           </ViewWrapper>

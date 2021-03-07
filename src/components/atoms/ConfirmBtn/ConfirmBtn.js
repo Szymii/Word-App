@@ -10,6 +10,7 @@ export const ConfirmBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
   display: flex;
   align-items: center;
+  cursor: pointer;
   svg {
     margin-left: 20px;
   }

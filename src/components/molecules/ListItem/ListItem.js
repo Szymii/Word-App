@@ -17,7 +17,7 @@ const ListItem = ({ word, meaning, onClick }) => {
       <IconBtn type="button" onClick={() => onClick(word)}>
         <TrashIcon />
       </IconBtn>
-      <Link to="/add-word">
+      <Link to="/Word-App/add-word">
         <IconBtn type="button" onClick={() => handleEdit(word, meaning)}>
           <FaEdit />
         </IconBtn>
