@@ -55,7 +55,7 @@ const AddWords = () => {
   };
 
   return (
-    <Form as="form" onSubmit={handleSubmit}>
+    <Form as="form" autoComplete="off" onSubmit={handleSubmit}>
       <Title>Your new word:</Title>
       <FormField>
         <Input
