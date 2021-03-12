@@ -8,13 +8,9 @@ const DesktopNav = () => {
   const { handleClear } = useContext(StorageContext);
   return (
     <Wrapper>
-      <DeskNavBtn path="/Word-App/" icon={<FaHome />} />
-      <DeskNavBtn
-        path="/Word-App/add-word"
-        icon={<FaPlus />}
-        onClick={handleClear}
-      />
-      <DeskNavBtn path="/Word-App/word-list" icon={<FaList />} />
+      <DeskNavBtn path="/" icon={<FaHome />} />
+      <DeskNavBtn path="/add-word" icon={<FaPlus />} onClick={handleClear} />
+      <DeskNavBtn path="/word-list" icon={<FaList />} />
     </Wrapper>
   );
 };

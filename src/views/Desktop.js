@@ -32,17 +32,17 @@ const Desktop = () => {
     <Wrapper>
       <Title> Word APP</Title>
       <Switch>
-        <Route path="/Word-App/word-list">
+        <Route path="/word-list">
           <ViewWrapper>
             <WordList />
           </ViewWrapper>
         </Route>
-        <Route path="/Word-App/add-word">
+        <Route path="/add-word">
           <ViewWrapper>
             <AddWords />
           </ViewWrapper>
         </Route>
-        <Route path="/Word-App/">
+        <Route path="/">
           <ViewWrapper>
             <LernWords />
           </ViewWrapper>
