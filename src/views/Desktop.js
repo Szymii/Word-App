@@ -13,7 +13,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-const Title = styled.p`
+const Title = styled.header`
+  margin: 1em 0;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: bold;

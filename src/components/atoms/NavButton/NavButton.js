@@ -19,10 +19,12 @@ const StyledLink = styled.div`
   }
 `;
 
-const NavButton = ({ path, icon, ...rest }) => {
+const NavButton = ({ path, icon, label, ...rest }) => {
   return (
     <StyledLink {...rest}>
-      <Link to={path}>{icon}</Link>
+      <Link to={path} aria-label={label}>
+        {icon}
+      </Link>
     </StyledLink>
   );
 };

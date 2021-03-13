@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   height: 65px;
