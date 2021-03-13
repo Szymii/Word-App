@@ -1,1 +1,21 @@
-{}
+{
+  "name": "Word-app",
+  "short_name": "Word-app",
+  "icons": [
+    {
+      "src": "icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "theme_color": "#0B9FCE",
+  "background_color": "#171717",
+  "display": "standalone"
+}
