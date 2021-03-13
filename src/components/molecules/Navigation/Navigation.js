@@ -25,11 +25,16 @@ const Navigation = () => {
   const { handleClear } = useContext(StorageContext);
   return (
     <StyledNav>
-      <NavButton path="/add-word" icon={<FaPlus />} onClick={handleClear} />
+      <NavButton
+        path="/add-word"
+        icon={<FaPlus />}
+        onClick={handleClear}
+        label="Add word"
+      />
       <span></span>
-      <NavButton path="/" icon={<FaHome />} />
+      <NavButton path="/" icon={<FaHome />} label="Home page" />
       <span></span>
-      <NavButton path="/word-list" icon={<FaList />} />
+      <NavButton path="/word-list" icon={<FaList />} label="Word list" />
     </StyledNav>
   );
 };

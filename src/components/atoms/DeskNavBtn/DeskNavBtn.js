@@ -24,10 +24,10 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-const NavButton = ({ path, icon, ...rest }) => {
+const NavButton = ({ path, icon, label, ...rest }) => {
   return (
     <Wrapper {...rest}>
-      <StyledLink activeClassName="active" exact to={path}>
+      <StyledLink activeClassName="active" exact to={path} aria-label={label}>
         {icon}
       </StyledLink>
     </Wrapper>
