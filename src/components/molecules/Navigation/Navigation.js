@@ -5,7 +5,7 @@ import { FaPlus, FaHome, FaList } from 'react-icons/fa';
 import { StorageContext } from '../../../StorageProvider';
 
 const StyledNav = styled.nav`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   height: 65px;
   width: 100%;

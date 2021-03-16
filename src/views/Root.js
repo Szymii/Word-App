@@ -31,6 +31,11 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
+      if (
+        window.innerHeight < dimensions.height &&
+        dimensions.width === window.innerWidth
+      )
+        return;
       setDimensions({
         height: window.innerHeight,
         width: window.innerWidth,
@@ -38,7 +43,7 @@ function App() {
     };
 
     window.addEventListener('resize', handleResize);
-  }, []);
+  }, [dimensions.height, dimensions.width]);
 
   return (
     <Router>
