@@ -43,7 +43,7 @@ function App() {
     };
 
     window.addEventListener('resize', handleResize);
-  }, []);
+  }, [dimensions.height, dimensions.width]);
 
   return (
     <Router>
