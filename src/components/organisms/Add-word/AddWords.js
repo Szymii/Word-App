@@ -10,7 +10,9 @@ import { FaTrash as TrashIcon } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
 
 const AddWords = () => {
-  const { meaning, setMeaning, word, setWord } = useContext(StorageContext);
+  const { meaning, setMeaning, word, setWord, updateLocal } = useContext(
+    StorageContext
+  );
 
   const handleMeaningChange = (e, i) => {
     const value = [...meaning];
@@ -33,6 +35,7 @@ const AddWords = () => {
     e.preventDefault();
     if (validate(word, meaning)) {
       localStorage.setItem(word, JSON.stringify(meaning));
+      updateLocal();
       setMeaning(['']);
       setWord('');
     }
