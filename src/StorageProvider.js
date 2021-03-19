@@ -45,7 +45,6 @@ const StorageProvider = ({ children }) => {
   };
 
   const updateLocal = () => {
-    console.log('update');
     const keys = Object.keys(localStorage);
     const items = [];
     keys.forEach((key) => {

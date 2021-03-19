@@ -14,7 +14,9 @@ const LernWords = () => {
     <Wrapper>
       <p>{word}</p>
       {meaning.map((element) => (
-        <MeaningList key={element}>{element}</MeaningList>
+        <MeaningList key={element} test={false}>
+          {element}
+        </MeaningList>
       ))}
       <ConfirmBtn type="submit" onClick={changeLastIndex}>
         <span>Next</span>
