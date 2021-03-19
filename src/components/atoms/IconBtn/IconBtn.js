@@ -6,9 +6,8 @@ const StyledBtn = styled.button`
   width: 100%;
   border: none;
   padding: 12px;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: transparent;
   color: ${({ theme }) => theme.colors.white};
-  max-height: 60px;
   cursor: pointer;
   svg {
     height: 100%;

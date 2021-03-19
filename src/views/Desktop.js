@@ -23,15 +23,13 @@ const Title = styled.header`
 const ViewWrapper = styled.div`
   width: 25%;
   min-width: 450px;
-  height: 600px;
-  position: relative;
-  overflow: auto;
 `;
 
 const Desktop = () => {
   return (
     <Wrapper>
       <Title> Word APP</Title>
+      <DesktopNav />
       <Switch>
         <Route path="/word-list">
           <ViewWrapper>
@@ -49,7 +47,6 @@ const Desktop = () => {
           </ViewWrapper>
         </Route>
       </Switch>
-      <DesktopNav />
     </Wrapper>
   );
 };

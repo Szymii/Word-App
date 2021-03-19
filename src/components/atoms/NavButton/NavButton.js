@@ -1,31 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledLink = styled.div`
+const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  a {
+`;
+const StyledLink = styled(NavLink)`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    color: ${({ theme }) => theme.colors.white};
     height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-      color: ${({ theme }) => theme.colors.white};
-      height: 100%;
-      width: auto;
-    }
+    width: auto;
+  }
+  &.active > svg {
+    color: ${({ theme }) => theme.colors.blue};
   }
 `;
 
 const NavButton = ({ path, icon, label, ...rest }) => {
   return (
-    <StyledLink {...rest}>
-      <Link to={path} aria-label={label}>
+    <Wrapper {...rest}>
+      <StyledLink activeClassName="active" exact to={path} aria-label={label}>
         {icon}
-      </Link>
-    </StyledLink>
+      </StyledLink>
+    </Wrapper>
   );
 };
 
