@@ -33,7 +33,7 @@ const SpellWords = () => {
   const handleInputChange = (e) => {
     setAnswer({
       text: e.target.value,
-      correctness: answer.correctness,
+      correctness: 'none',
     });
   };
 
