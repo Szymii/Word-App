@@ -6,6 +6,7 @@ import DesktopNav from '../components/molecules/DesktopNav/DesktopNav';
 import AddWords from '../components/organisms/Add-word/AddWords';
 import WordList from '../components/organisms/Words-list/WordsList';
 import LernWords from '../components/organisms/Learn-words/LernWords';
+import SpellWords from '../components/organisms/Spell-words/SpellWords';
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -39,6 +40,11 @@ const Desktop = () => {
         <Route path="/add-word">
           <ViewWrapper>
             <AddWords />
+          </ViewWrapper>
+        </Route>
+        <Route path="/spell-words">
+          <ViewWrapper>
+            <SpellWords />
           </ViewWrapper>
         </Route>
         <Route path="/">

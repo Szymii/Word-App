@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import NavButton from '../../atoms/NavButton/NavButton';
-import { FaPlus, FaHome, FaList } from 'react-icons/fa';
+import { FaPlus, FaBookOpen, FaList, FaPenFancy } from 'react-icons/fa';
 import { StorageContext } from '../../../StorageProvider';
 
 const StyledNav = styled.nav`
@@ -32,9 +32,12 @@ const Navigation = () => {
         onClick={handleClear}
         label="Add word"
       />
-      <span></span>
-      <NavButton path="/" icon={<FaHome />} label="Home page" />
-      <span></span>
+      <NavButton path="/" icon={<FaBookOpen />} label="Home page" />
+      <NavButton
+        path="/spell-words"
+        icon={<FaPenFancy />}
+        label="Spell words"
+      />
       <NavButton path="/word-list" icon={<FaList />} label="Word list" />
     </StyledNav>
   );
