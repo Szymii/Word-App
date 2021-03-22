@@ -8,17 +8,19 @@ export const StorageContext = React.createContext({
   handleDelete: () => {},
 });
 
+const initState = [
+  {
+    word: 'Add words',
+    meaning: ['Add words'],
+  },
+];
+
 const StorageProvider = ({ children }) => {
   const [meaning, setMeaning] = useState(['']);
   const [word, setWord] = useState('');
 
   const [lastIndex, setLastIndex] = useState(0);
-  const [local, setLocal] = useState([
-    {
-      word: 'Add',
-      meaning: ['some', 'words'],
-    },
-  ]);
+  const [local, setLocal] = useState(initState);
 
   const handleEdit = (word, meaning) => {
     setWord(word);
@@ -41,7 +43,11 @@ const StorageProvider = ({ children }) => {
   const handleDelete = (word) => {
     const value = [...local].filter((obj) => obj.word !== word);
     localStorage.removeItem(word);
-    setLocal(value);
+    if (value.length === 0) {
+      setLocal(initState);
+    } else {
+      setLocal(value);
+    }
   };
 
   const updateLocal = () => {
