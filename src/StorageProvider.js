@@ -53,6 +53,7 @@ const StorageProvider = ({ children }) => {
         meaning: JSON.parse(localStorage.getItem(key)),
       });
     });
+    items.sort((a, b) => a.word.localeCompare(b.word));
     if (keys.length !== 0) setLocal(items);
   };
 

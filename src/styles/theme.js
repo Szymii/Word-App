@@ -6,6 +6,8 @@ export const theme = {
     lightGrey: '#5B5B5B',
     blue: '#0B9FCE',
     unactive: '#1C1C1C',
+    correct: '#00C508',
+    wrong: '#C61515',
   },
   fontSize: {
     l: '28px',
