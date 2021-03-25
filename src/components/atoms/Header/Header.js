@@ -20,7 +20,7 @@ const StyledHeader = styled.header`
 const Header = () => {
   return (
     <StyledHeader>
-      <p>Words APP</p>
+      <p>Word App</p>
     </StyledHeader>
   );
 };

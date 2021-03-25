@@ -8,3 +8,4 @@
 
 ![Desktop view](./readmeImg/desktop.jpg)
 ![Mobile View](./readmeImg/mobile.jpg)
+![Mobile View2](./readmeImg/mobile1.jpg)

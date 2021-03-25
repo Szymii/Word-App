@@ -11,3 +11,10 @@ export const Wrapper = styled.div`
     font-size: ${({ theme }) => theme.fontSize.l};
   }
 `;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  bottom: 15%;
+  left: calc(50% - 10.5rem);
+  width: 53px;
+`;

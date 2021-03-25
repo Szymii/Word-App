@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
 import MeaningList from '../../atoms/MeaningList/MeaningList';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper } from './LernWord.styles';
-import { FaForward } from 'react-icons/fa';
+import { Wrapper, IconWrapper } from './LernWord.styles';
+import { FaForward, FaRandom } from 'react-icons/fa';
 
 import { StorageContext } from '../../../StorageProvider';
+import IconBtn from '../../atoms/IconBtn/IconBtn';
 
 const LernWords = () => {
-  let { lastIndex, changeLastIndex, local } = useContext(StorageContext);
+  let { lastIndex, changeLastIndex, local, random, changeRandom } = useContext(
+    StorageContext
+  );
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
 
   return (
@@ -22,6 +25,15 @@ const LernWords = () => {
         <span>Next</span>
         <FaForward />
       </ConfirmBtn>
+      <IconWrapper>
+        <IconBtn
+          random={random ? random : null}
+          onClick={changeRandom}
+          label="Random order"
+        >
+          <FaRandom />
+        </IconBtn>
+      </IconWrapper>
     </Wrapper>
   );
 };

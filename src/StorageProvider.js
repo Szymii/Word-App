@@ -6,6 +6,7 @@ export const StorageContext = React.createContext({
   changeLastIndex: () => {},
   updateLocal: () => {},
   handleDelete: () => {},
+  changeRandom: () => {},
 });
 
 const initState = [
@@ -21,6 +22,7 @@ const StorageProvider = ({ children }) => {
 
   const [lastIndex, setLastIndex] = useState(0);
   const [local, setLocal] = useState(initState);
+  const [random, setRandom] = useState(false);
 
   const handleEdit = (word, meaning) => {
     setWord(word);
@@ -32,22 +34,29 @@ const StorageProvider = ({ children }) => {
     setMeaning(['']);
   };
 
+  const getRandom = () => {
+    return Math.floor(Math.random() * local.length);
+  };
+
   const changeLastIndex = () => {
-    if (local.length <= lastIndex + 1) {
-      setLastIndex(0);
-    } else {
-      setLastIndex(lastIndex + 1);
-    }
+    let index = lastIndex + 1;
+    if (local.length <= lastIndex + 1) index = 0;
+    if (random) index = getRandom();
+
+    setLastIndex(index);
+    sessionStorage.setItem('index', index);
   };
 
   const handleDelete = (word) => {
     const value = [...local].filter((obj) => obj.word !== word);
     localStorage.removeItem(word);
-    if (value.length === 0) {
-      setLocal(initState);
-    } else {
-      setLocal(value);
-    }
+    if (value.length === 0) return setLocal(initState);
+    setLocal(value);
+  };
+
+  const changeRandom = () => {
+    setRandom(!random);
+    sessionStorage.setItem('random', !random);
   };
 
   const updateLocal = () => {
@@ -63,8 +72,16 @@ const StorageProvider = ({ children }) => {
     if (keys.length !== 0) setLocal(items);
   };
 
+  const getSessionstorage = () => {
+    const index = JSON.parse(sessionStorage.getItem('index'));
+    const random = JSON.parse(sessionStorage.getItem('random'));
+    if (index) setLastIndex(index);
+    if (random) setRandom(random);
+  };
+
   useEffect(() => {
     updateLocal();
+    getSessionstorage();
   }, []);
 
   return (
@@ -82,6 +99,8 @@ const StorageProvider = ({ children }) => {
         local,
         updateLocal,
         handleDelete,
+        random,
+        changeRandom,
       }}
     >
       {children}
