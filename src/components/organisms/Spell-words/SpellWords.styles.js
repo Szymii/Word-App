@@ -36,3 +36,10 @@ export const StyledInput = styled.input`
     border-bottom: solid 2px ${({ theme }) => theme.colors.blue};
   }
 `;
+
+export const IconWrapper = styled.div`
+  position: absolute;
+  bottom: 15%;
+  left: calc(50% - 10.5rem);
+  width: 53px;
+`;

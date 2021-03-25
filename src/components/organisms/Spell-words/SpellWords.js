@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import MeaningList from '../../atoms/MeaningList/MeaningList';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper, StyledInput } from './SpellWords.styles';
-import { FaCheck, FaForward } from 'react-icons/fa';
+import { Wrapper, StyledInput, IconWrapper } from './SpellWords.styles';
+import { FaCheck, FaForward, FaRandom } from 'react-icons/fa';
+import IconBtn from '../../atoms/IconBtn/IconBtn';
 import { StorageContext } from '../../../StorageProvider';
 
 const initValue = {
@@ -11,12 +12,13 @@ const initValue = {
 };
 
 const SpellWords = () => {
-  let { lastIndex, changeLastIndex, local } = useContext(StorageContext);
+  let { lastIndex, changeLastIndex, local, random, changeRandom } = useContext(
+    StorageContext
+  );
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
   const [answer, setAnswer] = useState(initValue);
 
   const checkSpelling = () => {
-    console.log(answer.text, word);
     if (answer.text.toUpperCase() === word.toUpperCase()) {
       setAnswer({
         text: answer.text,
@@ -83,6 +85,15 @@ const SpellWords = () => {
       >
         {button()}
       </ConfirmBtn>
+      <IconWrapper>
+        <IconBtn
+          random={random ? random : null}
+          onClick={changeRandom}
+          label="Random order"
+        >
+          <FaRandom />
+        </IconBtn>
+      </IconWrapper>
     </Wrapper>
   );
 };

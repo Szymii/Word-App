@@ -29,7 +29,7 @@ const ViewWrapper = styled.div`
 const Desktop = () => {
   return (
     <Wrapper>
-      <Title> Word APP</Title>
+      <Title> Word App</Title>
       <DesktopNav />
       <Switch>
         <Route path="/word-list">

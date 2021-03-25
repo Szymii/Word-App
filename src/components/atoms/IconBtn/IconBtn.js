@@ -6,8 +6,11 @@ const StyledBtn = styled.button`
   width: 100%;
   border: none;
   padding: 12px;
+  display: flex;
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ random, theme }) =>
+    random ? theme.colors.blue : theme.colors.white};
+  /* color: ${({ theme }) => theme.colors.white}; */
   cursor: pointer;
   svg {
     height: 100%;
@@ -15,8 +18,12 @@ const StyledBtn = styled.button`
   }
 `;
 
-const DeleteBtn = ({ children, ...props }) => {
-  return <StyledBtn {...props}>{children}</StyledBtn>;
+const IconBtn = ({ label, children, ...props }) => {
+  return (
+    <StyledBtn {...props} aria-label={label}>
+      {children}
+    </StyledBtn>
+  );
 };
 
-export default DeleteBtn;
+export default IconBtn;
