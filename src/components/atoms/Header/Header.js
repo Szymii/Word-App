@@ -15,6 +15,7 @@ const StyledHeader = styled.header`
   p {
     margin: 0;
   }
+  z-index: 9;
 `;
 
 const Header = () => {
