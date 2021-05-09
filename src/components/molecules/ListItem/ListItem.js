@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const ListItem = ({ word, meaning, onClick }) => {
   const { handleEdit } = useContext(StorageContext);
+
   return (
     <StyledLi>
       <div>

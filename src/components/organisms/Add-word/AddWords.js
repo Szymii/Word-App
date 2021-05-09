@@ -49,7 +49,7 @@ const AddWords = () => {
     }
   };
 
-  const handleDelete = (i) => {
+  const handleDelete = (i) => () => {
     if (meaning.length > 1) {
       const value = [...meaning];
       value.splice(i, 1);
@@ -78,7 +78,7 @@ const AddWords = () => {
             value={value}
             onChange={(e) => handleMeaningChange(e, i)}
           />
-          <IconBtn type="button" onClick={() => handleDelete(i)}>
+          <IconBtn type="button" onClick={handleDelete(i)}>
             <TrashIcon />
           </IconBtn>
           <IconBtn type="button" onClick={handleAdd}>

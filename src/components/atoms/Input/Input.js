@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Input = styled.input`
   width: 100%;
-  border: solid 2px ${({ theme }) => theme.colors.grey};
+  border: solid 2px ${({ theme }) => theme.colors.gray};
   padding: 0 20px;
   font-size: ${({ theme }) => theme.fontSize.n};
   background-color: transparent;

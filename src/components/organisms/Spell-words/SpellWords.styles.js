@@ -28,7 +28,7 @@ export const StyledInput = styled.input`
       case 'wrong':
         return ({ theme }) => theme.colors.wrong;
       default:
-        return ({ theme }) => theme.colors.grey;
+        return ({ theme }) => theme.colors.gray;
     }
   }};
   &:focus {

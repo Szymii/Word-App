@@ -5,7 +5,7 @@ export const StyledItem = styled.div`
   padding: 5px;
   margin-top: 30px;
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.gray};
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.m};
   position: relative;
