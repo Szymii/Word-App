@@ -8,7 +8,7 @@ export const StyledLi = styled.li`
   padding: 17px 30px;
   margin-top: 25px;
   color: ${({ theme }) => theme.colors.white};
-  background-color: ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.lightGray};
   div {
     white-space: nowrap;
     overflow: hidden;
