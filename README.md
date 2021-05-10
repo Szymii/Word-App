@@ -15,5 +15,6 @@
 - [React](https://reactjs.org/)
   - [React Icons](https://react-icons.github.io/react-icons)
   - React Context API
+  - [React modal](https://www.npmjs.com/package/react-modal)
 - [Styled Components](https://styled-components.com/)
 - [PWA](https://web.dev/progressive-web-apps/)
