@@ -6,7 +6,6 @@ export const StyledLi = styled.li`
   grid-template-rows: 60px;
   gap: 25px;
   padding: 17px 30px;
-  margin-top: 25px;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lightGray};
   div {
@@ -18,6 +17,13 @@ export const StyledLi = styled.li`
     margin-top: 0;
     margin-bottom: 10px;
     font-size: ${({ theme }) => theme.fontSize.n};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    span {
+      font-size: inherit;
+      background-color: ${({ theme }) => theme.colors.blue};
+    }
   }
   span {
     font-size: ${({ theme }) => theme.fontSize.s};

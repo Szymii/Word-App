@@ -7,8 +7,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   p {
+    max-width: 100%;
     color: ${({ theme }) => theme.colors.white};
     font-size: ${({ theme }) => theme.fontSize.l};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
