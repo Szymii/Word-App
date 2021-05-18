@@ -15,5 +15,6 @@
 - [React](https://reactjs.org/)
   - [React Icons](https://react-icons.github.io/react-icons)
   - React Context API
+  - [React String Replace](https://github.com/iansinnott/react-string-replace)
 - [Styled Components](https://styled-components.com/)
 - [PWA](https://web.dev/progressive-web-apps/)

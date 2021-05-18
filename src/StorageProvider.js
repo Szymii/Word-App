@@ -22,6 +22,8 @@ const StorageProvider = ({ children }) => {
 
   const [lastIndex, setLastIndex] = useState(0);
   const [local, setLocal] = useState(initState);
+  const [fitered, setFiltered] = useState(initState);
+  const [phrase, setPhrase] = useState('');
   const [random, setRandom] = useState(false);
 
   const handleEdit = (word, meaning) => {
@@ -84,6 +86,13 @@ const StorageProvider = ({ children }) => {
     getSessionstorage();
   }, []);
 
+  useEffect(() => {
+    const newArray = local.filter((item) =>
+      item.word.toLowerCase().includes(phrase.toLowerCase().trim())
+    );
+    setFiltered(newArray);
+  }, [local, phrase]);
+
   return (
     <StorageContext.Provider
       value={{
@@ -101,6 +110,9 @@ const StorageProvider = ({ children }) => {
         handleDelete,
         random,
         changeRandom,
+        phrase,
+        setPhrase,
+        fitered,
       }}
     >
       {children}

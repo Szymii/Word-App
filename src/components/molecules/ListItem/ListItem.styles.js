@@ -17,6 +17,13 @@ export const StyledLi = styled.li`
     margin-top: 0;
     margin-bottom: 10px;
     font-size: ${({ theme }) => theme.fontSize.n};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    span {
+      font-size: inherit;
+      background-color: ${({ theme }) => theme.colors.blue};
+    }
   }
   span {
     font-size: ${({ theme }) => theme.fontSize.s};

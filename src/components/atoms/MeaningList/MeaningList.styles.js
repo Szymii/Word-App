@@ -10,6 +10,9 @@ export const StyledItem = styled.div`
   font-size: ${({ theme }) => theme.fontSize.m};
   position: relative;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   &::after {
     ${({ shown }) => {
       if (shown) {

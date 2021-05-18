@@ -5,17 +5,18 @@ import { StyledList } from './WordsList.styles';
 import { StorageContext } from '../../../StorageProvider';
 
 const WordsList = () => {
-  const { handleDelete, local } = useContext(StorageContext);
+  const { handleDelete, fitered, phrase } = useContext(StorageContext);
 
   return (
     <>
       <SearchBar />
       <StyledList>
-        {local.map(({ word, meaning }) => (
+        {fitered.map(({ word, meaning }) => (
           <ListItem
             key={word}
             word={word}
             meaning={meaning}
+            phrase={phrase}
             onClick={handleDelete}
           />
         ))}
