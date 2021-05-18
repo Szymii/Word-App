@@ -6,7 +6,6 @@ export const StyledLi = styled.li`
   grid-template-rows: 60px;
   gap: 25px;
   padding: 17px 30px;
-  margin-top: 25px;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lightGrey};
   div {
