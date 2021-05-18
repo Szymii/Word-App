@@ -21,11 +21,15 @@ const ListItem = ({ word, meaning, onClick, phrase }) => {
         <p>{highlightMatches()}</p>
         <span>{meaning.join(', ')}</span>
       </div>
-      <IconBtn type="button" onClick={() => onClick(word)}>
+      <IconBtn type="button" onClick={() => onClick(word)} label="delete">
         <TrashIcon />
       </IconBtn>
       <Link to="/add-word">
-        <IconBtn type="button" onClick={() => handleEdit(word, meaning)}>
+        <IconBtn
+          type="button"
+          onClick={() => handleEdit(word, meaning)}
+          label="edit"
+        >
           <FaEdit />
         </IconBtn>
       </Link>

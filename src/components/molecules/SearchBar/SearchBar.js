@@ -11,7 +11,12 @@ const SearchBar = () => {
 
   return (
     <Wrapper>
-      <Input value={phrase} onChange={handleChange} />
+      <Input
+        value={phrase}
+        onChange={handleChange}
+        type="text"
+        name="search bar"
+      />
     </Wrapper>
   );
 };
