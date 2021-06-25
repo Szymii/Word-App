@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import StorageProvider from '../StorageProvider';
 import Mobile from './Mobile';
@@ -8,6 +8,8 @@ import styled, { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/GlobalStyle';
 import { theme } from '../styles/theme';
 
+import useDimensions from '../hooks/useDimensions';
+
 const Wrapper = styled.div`
   position: relative;
   min-height: ${({ height }) => height}px;
@@ -16,10 +18,7 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
+  const { dimensions } = useDimensions();
 
   let view;
 
@@ -28,22 +27,6 @@ function App() {
   } else {
     view = <Desktop />;
   }
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (
-        window.innerHeight < dimensions.height &&
-        dimensions.width === window.innerWidth
-      )
-        return;
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener('resize', handleResize);
-  }, [dimensions.height, dimensions.width]);
 
   return (
     <Router>
