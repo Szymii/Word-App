@@ -1,4 +1,5 @@
 # Word App
+Try it now! [https://szymii-word-app.netlify.app/add-word](https://szymii-word-app.netlify.app/add-word)
 
 ## Create your own dictionary
 
