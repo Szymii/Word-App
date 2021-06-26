@@ -8,7 +8,7 @@ const MeaningList = ({ children, test }) => {
   };
 
   return (
-    <StyledItem shown={shown} onClick={handleClick}>
+    <StyledItem shown={shown} test={test} onClick={handleClick}>
       <>{children}</>
     </StyledItem>
   );

@@ -9,7 +9,7 @@ export const StyledItem = styled.div`
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.m};
   position: relative;
-  cursor: pointer;
+  cursor: ${({ test }) => (test ? 'default' : 'pointer')};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

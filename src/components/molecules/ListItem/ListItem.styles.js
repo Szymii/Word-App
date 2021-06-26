@@ -4,7 +4,7 @@ export const StyledLi = styled.li`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 60px;
-  gap: 25px;
+  gap: 1.5em;
   padding: 17px 30px;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lightGray};

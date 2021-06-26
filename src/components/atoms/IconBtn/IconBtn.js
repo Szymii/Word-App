@@ -13,6 +13,7 @@ const StyledBtn = styled.button`
   cursor: pointer;
   svg {
     height: 100%;
+    min-width: 20px;
     width: 100%;
   }
 `;
