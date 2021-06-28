@@ -13,6 +13,11 @@ const SpellWords = () => {
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
   const { answer, checkSpelling, handleInputChange } = useCorrect(word);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(lastIndex);
+  };
+
   const button = () => {
     if (answer.correctness === 'correct') {
       return (
@@ -31,28 +36,30 @@ const SpellWords = () => {
   };
 
   return (
-    <Wrapper>
-      <StyledInput
-        type="text"
-        value={answer.text}
-        name=""
-        correctness={answer.correctness}
-        onChange={handleInputChange}
-        placeholder="Answer"
-      />
-      {meaning.map((element) => (
-        <MeaningList key={element} test={true}>
-          {element}
-        </MeaningList>
-      ))}
-      <ConfirmBtn
-        type="submit"
-        onClick={
-          answer.correctness === 'correct' ? changeLastIndex : checkSpelling
-        }
-      >
-        {button()}
-      </ConfirmBtn>
+    <>
+      <Wrapper onSubmit={handleSubmit}>
+        <StyledInput
+          type="text"
+          value={answer.text}
+          name=""
+          correctness={answer.correctness}
+          onChange={handleInputChange}
+          placeholder="Answer"
+        />
+        {meaning.map((element) => (
+          <MeaningList key={element} test={true}>
+            {element}
+          </MeaningList>
+        ))}
+        <ConfirmBtn
+          type="submit"
+          onClick={
+            answer.correctness === 'correct' ? changeLastIndex : checkSpelling
+          }
+        >
+          {button()}
+        </ConfirmBtn>
+      </Wrapper>
       <IconWrapper>
         <IconBtn
           random={random ? random : null}
@@ -62,7 +69,7 @@ const SpellWords = () => {
           <FaRandom />
         </IconBtn>
       </IconWrapper>
-    </Wrapper>
+    </>
   );
 };
 
