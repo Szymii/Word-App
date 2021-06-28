@@ -15,7 +15,6 @@ const SpellWords = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(lastIndex);
   };
 
   const button = () => {

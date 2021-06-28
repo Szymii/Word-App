@@ -8,7 +8,7 @@ const initValue = {
 const useCorrect = (word) => {
   const [answer, setAnswer] = useState(initValue);
   const checkSpelling = () => {
-    if (answer.text.toUpperCase() === word.toUpperCase()) {
+    if (answer.text.toUpperCase().trim() === word.toUpperCase()) {
       setAnswer({
         text: answer.text,
         correctness: 'correct',

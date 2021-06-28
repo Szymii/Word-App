@@ -43,7 +43,12 @@ const StorageProvider = ({ children }) => {
   const changeLastIndex = () => {
     let index = lastIndex + 1;
     if (local.length <= lastIndex + 1) index = 0;
-    if (random) index = getRandom();
+    if (random) {
+      let randomIndex = getRandom();
+      if (randomIndex === lastIndex) randomIndex += 1;
+      if (randomIndex >= local.length) randomIndex = 0;
+      index = randomIndex;
+    }
 
     setLastIndex(index);
     sessionStorage.setItem('index', index);
