@@ -22,7 +22,7 @@ const StorageProvider = ({ children }) => {
 
   const [lastIndex, setLastIndex] = useState(0);
   const [local, setLocal] = useState(initState);
-  const [fitered, setFiltered] = useState(initState);
+  const [filtered, setFiltered] = useState(initState);
   const [phrase, setPhrase] = useState('');
   const [random, setRandom] = useState(false);
 
@@ -117,7 +117,7 @@ const StorageProvider = ({ children }) => {
         changeRandom,
         phrase,
         setPhrase,
-        fitered,
+        filtered,
       }}
     >
       {children}

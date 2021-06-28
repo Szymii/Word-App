@@ -16,7 +16,7 @@ const LernWords = () => {
     <Wrapper>
       <p>{word}</p>
       {meaning.map((element) => (
-        <MeaningList key={element} test={false}>
+        <MeaningList key={element} test={false} tab>
           {element}
         </MeaningList>
       ))}
