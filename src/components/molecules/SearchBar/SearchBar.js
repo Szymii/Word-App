@@ -19,6 +19,8 @@ const SearchBar = () => {
         onChange={handleChange}
         type="text"
         name="search bar"
+        autoComplete="off"
+        placeholder="What are you looking for?"
       />
     </Wrapper>
   );

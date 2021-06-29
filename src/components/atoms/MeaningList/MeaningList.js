@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { StyledItem } from './MeaningList.styles';
 
-const MeaningList = ({ children, test }) => {
+const MeaningList = ({ children, test, tab }) => {
   const [shown, setShown] = useState(!test);
   const handleClick = () => {
     if (!test) setShown(!shown);
   };
 
   return (
-    <StyledItem shown={shown} onClick={handleClick}>
+    <StyledItem
+      as={tab ? 'button' : ''}
+      shown={shown}
+      test={test}
+      onClick={handleClick}
+    >
       <>{children}</>
     </StyledItem>
   );

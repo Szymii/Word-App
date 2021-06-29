@@ -14,7 +14,7 @@ const ConfirmModal = ({ handleModalClose, handleDelete, currentWord }) => {
         <FaTrash /> Are you sure?
       </TitleWrapper>
       <ButtonWrapper>
-        <ConfirmBtn isSmall onClick={handleConfirm}>
+        <ConfirmBtn isSmall autoFocus onClick={handleConfirm}>
           Delete
         </ConfirmBtn>
         <ConfirmBtn isSmall isGray onClick={handleModalClose}>

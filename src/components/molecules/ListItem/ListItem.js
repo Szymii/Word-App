@@ -24,7 +24,7 @@ const ListItem = ({ word, meaning, onClick, phrase }) => {
       <IconBtn type="button" onClick={() => onClick(word)} label="delete">
         <TrashIcon />
       </IconBtn>
-      <Link to="/add-word">
+      <Link to="/add-word" tabIndex="-1">
         <IconBtn
           type="button"
           onClick={() => handleEdit(word, meaning)}

@@ -7,7 +7,7 @@ import { StorageContext } from '../../../StorageProvider';
 import ConfirmModal from '../../molecules/ConfirmModal/ConfirmModal';
 
 const WordsList = () => {
-  const { handleDelete, fitered, phrase } = useContext(StorageContext);
+  const { handleDelete, filtered, phrase } = useContext(StorageContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currentWord, setCurrentWord] = useState('');
   const handleModalOpen = (word) => {
@@ -20,7 +20,7 @@ const WordsList = () => {
     <>
       <SearchBar />
       <StyledList>
-        {fitered.map(({ word, meaning }) => (
+        {filtered.map(({ word, meaning }) => (
           <ListItem
             key={word}
             word={word}

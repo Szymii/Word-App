@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
 import MeaningList from '../../atoms/MeaningList/MeaningList';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper, IconWrapper } from './LernWord.styles';
+import { Wrapper, IconWrapper } from './LernWords.styles';
 import { FaForward, FaRandom } from 'react-icons/fa';
 
 import { StorageContext } from '../../../StorageProvider';
 import IconBtn from '../../atoms/IconBtn/IconBtn';
 
 const LernWords = () => {
-  let { lastIndex, changeLastIndex, local, random, changeRandom } = useContext(
-    StorageContext
-  );
+  let { lastIndex, changeLastIndex, local, random, changeRandom } =
+    useContext(StorageContext);
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
 
   return (
     <Wrapper>
       <p>{word}</p>
       {meaning.map((element) => (
-        <MeaningList key={element} test={false}>
+        <MeaningList key={element} test={false} tab>
           {element}
         </MeaningList>
       ))}
