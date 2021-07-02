@@ -23,7 +23,7 @@ const Title = styled.header`
 
 const ViewWrapper = styled.div`
   width: 25%;
-  min-width: 450px;
+  min-width: 28em;
 `;
 
 const Desktop = () => {

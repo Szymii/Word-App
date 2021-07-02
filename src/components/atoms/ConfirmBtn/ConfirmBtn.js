@@ -4,7 +4,7 @@ export const ConfirmBtn = styled.button`
   position: absolute;
   bottom: 15%;
   width: ${({ isSmall }) => (isSmall ? '7.5rem' : '10.5rem')};
-  padding: 12px 0;
+  padding: 0.6em 0;
   border: none;
   font-size: ${({ theme }) => theme.fontSize.m};
   background-color: ${({ theme, isGray }) =>
@@ -15,6 +15,6 @@ export const ConfirmBtn = styled.button`
   justify-content: center;
   cursor: pointer;
   svg {
-    margin-left: 20px;
+    margin-left: 1.25em;
   }
 `;

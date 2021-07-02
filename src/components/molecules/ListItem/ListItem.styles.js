@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const StyledLi = styled.li`
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 60px;
+  grid-template-rows: 3.25em;
   gap: 1.5em;
-  padding: 17px 30px;
+  padding: 1em 1.875em;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lightGray};
   div {
@@ -15,8 +15,8 @@ export const StyledLi = styled.li`
   }
   p {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: ${({ theme }) => theme.fontSize.n};
+    margin-bottom: 0.25em;
+    font-size: ${({ theme }) => theme.fontSize.m};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

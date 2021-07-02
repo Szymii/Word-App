@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledHeader = styled.header`
   position: sticky;
   top: 0;
-  height: 65px;
+  height: 2em;
   background-color: ${({ theme }) => theme.colors.blue};
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSize.l};

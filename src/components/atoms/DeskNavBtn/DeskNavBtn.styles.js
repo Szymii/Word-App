@@ -12,7 +12,7 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 5px;
+  padding-bottom: 0.4em;
   svg {
     color: ${({ theme }) => theme.colors.white};
     height: 60%;

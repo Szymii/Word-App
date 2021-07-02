@@ -5,7 +5,7 @@ const StyledBtn = styled.button`
   height: 100%;
   width: 100%;
   border: none;
-  padding: 12px;
+  padding: 0.75em;
   display: flex;
   background-color: transparent;
   color: ${({ random, theme }) =>
@@ -13,7 +13,7 @@ const StyledBtn = styled.button`
   cursor: pointer;
   svg {
     height: 100%;
-    min-width: 20px;
+    max-width: 5em;
     width: 100%;
   }
 `;

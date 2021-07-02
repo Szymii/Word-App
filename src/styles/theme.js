@@ -10,9 +10,9 @@ export const theme = {
     wrong: '#C61515',
   },
   fontSize: {
-    l: '28px',
-    m: '24px',
-    n: '18px',
-    s: '14px',
+    l: '1.75rem',
+    m: '1.5rem',
+    n: '1.125rem',
+    s: '0.875rem',
   },
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.form`
-  padding: 80px 20px 160px 20px;
+  padding: 3em 1.125em 10em;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -14,10 +14,10 @@ export const Wrapper = styled.form`
 
 export const StyledInput = styled.input`
   width: 60%;
-  height: 50px;
-  margin: 20px 0;
-  border: solid 2px;
-  padding: 0 20px;
+  height: 3.125em;
+  margin: 1.25em 0;
+  border: solid 0.1em;
+  padding: 0 1.25em;
   font-size: ${({ theme }) => theme.fontSize.n};
   background-color: transparent;
   color: ${({ theme }) => theme.colors.white};
@@ -33,13 +33,13 @@ export const StyledInput = styled.input`
   }};
   &:focus {
     outline: none;
-    border-bottom: solid 2px ${({ theme }) => theme.colors.blue};
+    border-bottom: solid 0.1em ${({ theme }) => theme.colors.blue};
   }
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
-  bottom: 15%;
+  bottom: 15.5%;
   left: calc(50% - 10.5rem);
-  width: 53px;
+  width: 3.2em;
 `;

@@ -5,9 +5,9 @@ const StyledField = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 4fr 1fr 1fr;
-  grid-template-rows: 50px;
-  gap: 20px;
-  margin-bottom: 20px;
+  grid-template-rows: 3.125em;
+  gap: 1.125em;
+  margin-bottom: 1.125em;
 `;
 
 const FormField = ({ children }) => {

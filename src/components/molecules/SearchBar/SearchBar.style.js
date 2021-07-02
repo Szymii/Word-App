@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: ${({ mobile }) =>
-    mobile ? '20px 25px 20px 25px' : '20px 42px 20px 25px'};
+    mobile ? '1.25em 1.5em 1.25em 1.5em' : '1.25em 1.5em'};
   display: flex;
 
   input {

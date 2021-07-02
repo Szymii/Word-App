@@ -26,13 +26,13 @@ export const ModalWrapper = styled(ReactModalAdapter)`
 
   &__content {
     position: absolute;
-    width: 300px;
-    height: 180px;
+    width: 18.75em;
+    height: 11.25;
     background-color: ${({ theme }) => theme.colors.black};
     top: 20%;
     left: 50%;
     transform: translateX(-50%);
-    border: solid 1px ${({ theme }) => theme.colors.blue};
+    border: solid 0.05em ${({ theme }) => theme.colors.blue};
 
     &:focus {
       outline: none;

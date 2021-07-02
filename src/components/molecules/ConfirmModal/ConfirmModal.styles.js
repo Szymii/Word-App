@@ -6,14 +6,14 @@ export const TitleWrapper = styled.h2`
   justify-content: space-evenly;
   align-items: center;
   svg {
-    height: 44px;
+    height: 2.9em;
   }
 `;
 export const ButtonWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: space-evenly;
-  margin-top: 40px;
+  padding-bottom: 1em;
   button {
     position: relative;
   }
