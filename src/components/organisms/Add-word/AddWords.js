@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Form, Title } from './AddWords.styles';
 import FormField from '../../molecules/FormField/FormField';
 import IconBtn from '../../atoms/IconBtn/IconBtn';
-import InfoModal from '../../molecules/InfoModal/InfoModal';
 import { Input } from '../../atoms/Input/Input';
 import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
 import { StorageContext } from '../../../StorageProvider';
+import { useInfo } from '../../../hooks/useInfo';
 
 import { FaTrash as TrashIcon } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
@@ -13,9 +13,7 @@ import { FaPlus } from 'react-icons/fa';
 const AddWords = () => {
   const { meaning, setMeaning, word, setWord, updateLocal } =
     useContext(StorageContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [info, setInfo] = useState('');
-
+  const { dispatchInfo } = useInfo();
   const validate = (word, meaning) => {
     const regex = /(.|\s)*\S/;
     if (!regex.test(word)) return false;
@@ -54,28 +52,6 @@ const AddWords = () => {
     }
   };
 
-  const openModal = (prop) => {
-    if (prop) {
-      setInfo('Successfully added!');
-      setIsOpen(true);
-    } else {
-      setInfo('All field are required.');
-      setIsOpen(true);
-    }
-  };
-
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted)
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 3500);
-
-    return () => {
-      isMounted = false;
-    };
-  }, [isOpen]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate(word, meaning)) {
@@ -83,9 +59,9 @@ const AddWords = () => {
       updateLocal();
       setMeaning(['']);
       setWord('');
-      openModal(true);
+      dispatchInfo('Successfully added!');
     } else {
-      openModal(false);
+      dispatchInfo('All field are required.');
     }
   };
 
@@ -121,9 +97,6 @@ const AddWords = () => {
         ))}
         <ConfirmBtn type="submit">Confirm</ConfirmBtn>
       </Form>
-      <InfoModal isOpen={isOpen} handleModalClose={() => setIsOpen(false)}>
-        {info}
-      </InfoModal>
     </>
   );
 };
