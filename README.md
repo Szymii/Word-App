@@ -15,7 +15,7 @@ Try it now! [https://szymii-word-app.netlify.app/add-word](https://szymii-word-a
 
 - [React](https://reactjs.org/)
   - [React Icons](https://react-icons.github.io/react-icons)
-  - React Context API
+  - [React Context API](https://reactjs.org/docs/context.html)
   - [React modal](https://www.npmjs.com/package/react-modal)
   - [React String Replace](https://github.com/iansinnott/react-string-replace)
 - [Styled Components](https://styled-components.com/)
