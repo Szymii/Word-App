@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
+import { useInfo } from '../hooks/useInfo';
 
 import DesktopNav from '../components/molecules/DesktopNav/DesktopNav';
 import AddWords from '../components/organisms/Add-word/AddWords';
 import WordList from '../components/organisms/Words-list/WordsList';
 import LernWords from '../components/organisms/Learn-words/LernWords';
 import SpellWords from '../components/organisms/Spell-words/SpellWords';
+import InfoModal from '../components/molecules/InfoModal/InfoModal';
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -27,6 +29,8 @@ const ViewWrapper = styled.div`
 `;
 
 const Desktop = () => {
+  const { info } = useInfo();
+
   return (
     <Wrapper>
       <Title> Word App</Title>
@@ -53,6 +57,7 @@ const Desktop = () => {
           </ViewWrapper>
         </Route>
       </Switch>
+      {info ? <InfoModal info={info} /> : ''}
     </Wrapper>
   );
 };

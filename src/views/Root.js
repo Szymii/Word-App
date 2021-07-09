@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import StorageProvider from '../StorageProvider';
+import InfoProvider from '../hooks/useInfo';
 import Mobile from './Mobile';
 import Desktop from './Desktop';
 
@@ -30,12 +31,14 @@ function App() {
 
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <StorageProvider>
-          <Wrapper height={dimensions.height}>{view}</Wrapper>
-        </StorageProvider>
-      </ThemeProvider>
+      <InfoProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <StorageProvider>
+            <Wrapper height={dimensions.height}>{view}</Wrapper>
+          </StorageProvider>
+        </ThemeProvider>
+      </InfoProvider>
     </Router>
   );
 }
