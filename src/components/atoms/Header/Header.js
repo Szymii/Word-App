@@ -5,12 +5,11 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   height: 2em;
-  background-color: ${({ theme }) => theme.colors.blue};
-  font-weight: bold;
-  font-size: ${({ theme }) => theme.fontSize.l};
+  background-color: ${({ theme }) => theme.colors.darkGray};
+  font-size: ${({ theme }) => theme.fontSize.m};
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 1em;
   color: ${({ theme }) => theme.colors.white};
   p {
     margin: 0;

@@ -11,7 +11,7 @@ const StyledBtn = styled.button`
   color: ${({ random, theme }) =>
     random ? theme.colors.blue : theme.colors.white};
   cursor: pointer;
-  svg {
+  & > svg {
     height: 100%;
     max-width: 5em;
     width: 100%;

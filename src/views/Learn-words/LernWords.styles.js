@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 1.2em 0;
   }
 `;
 

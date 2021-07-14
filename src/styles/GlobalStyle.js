@@ -5,10 +5,12 @@ export const GlobalStyle = createGlobalStyle`
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 html{
   font-size: 16px;
-  @media (min-width: 2000px) {
+  @media (min-width: 1500px) {
     font-size: 20px;
   }
   @media (min-width: 2500px) {
@@ -22,9 +24,7 @@ html{
   }
 }
 body {
-  
   font-family: 'Roboto', sans-serif;
-  margin: 0;
 }
 a, button {
   font-family: 'Roboto', sans-serif;

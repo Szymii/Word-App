@@ -1,15 +1,16 @@
 # Word App
+
 Try it now! [https://szymii-word-app.netlify.app/add-word](https://szymii-word-app.netlify.app/add-word)
 
 ## Create your own dictionary
 
 - Add and remove words
 - Menage your words list
-- Learn vocabulary and spelling
+- Train vocabulary and spelling
+- Make notes
 
 ![Desktop view](./readmeImg/desktop.jpg)
 ![Mobile View](./readmeImg/mobile.jpg)
-![Mobile View2](./readmeImg/mobile1.jpg)
 
 ## Built with
 

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useInfo } from '../hooks/useInfo';
 
 import Header from '../components/atoms/Header/Header';
-import Navigation from '../components/molecules/Navigation/Navigation';
+import Navigation from '../components/organisms/Navigation/Navigation';
 import AddWords from '../components/organisms/Add-word/AddWords';
 import WordList from '../components/organisms/Words-list/WordsList';
 import LernWords from '../components/organisms/Learn-words/LernWords';
