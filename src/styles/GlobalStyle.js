@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 html{
   font-size: 16px;
-  @media (min-width: 1500px) {
+  @media (min-width: 2000px) {
     font-size: 20px;
   }
   @media (min-width: 2500px) {

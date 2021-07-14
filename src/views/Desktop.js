@@ -13,14 +13,29 @@ import SideNav from '../components/organisms/SideNav/SideNav';
 const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
+  grid-template-columns: 18em 1fr;
+  grid-template-rows: 5em 1fr;
 `;
+
 const Title = styled.header`
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSize.l};
+  background-color: ${({ theme }) => theme.colors.darkGray};
+  display: grid;
+  align-items: center;
+  padding-left: 1em;
+  grid-column: 1 / 3;
+  grid-row: 1 / 1;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.pureBlack};
 `;
 
 const ViewWrapper = styled.div`
+  width: 30%;
+  min-width: 30em;
+  margin: 0 auto;
   position: relative;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
 `;
 
 const Desktop = () => {
@@ -28,7 +43,7 @@ const Desktop = () => {
 
   return (
     <Wrapper>
-      <Title> Word App</Title>
+      <Title>Word App</Title>
       <ViewWrapper>
         <Switch>
           <Route path="/word-list">
