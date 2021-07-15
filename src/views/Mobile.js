@@ -5,10 +5,10 @@ import { useInfo } from '../hooks/useInfo';
 
 import Header from '../components/atoms/Header/Header';
 import Navigation from '../components/organisms/Navigation/Navigation';
-import AddWords from '../components/organisms/Add-word/AddWords';
-import WordList from '../components/organisms/Words-list/WordsList';
-import LernWords from '../components/organisms/Learn-words/LernWords';
-import SpellWords from '../components/organisms/Spell-words/SpellWords';
+import AddWords from './Add-word/AddWords';
+import WordList from './/Words-list/WordsList';
+import LernWords from './Learn-words/LernWords';
+import SpellWords from './Spell-words/SpellWords';
 import InfoModal from '../components/molecules/InfoModal/InfoModal';
 
 const ViewWrapper = styled.div`

@@ -20,6 +20,6 @@ export const Wrapper = styled.div`
 export const IconWrapper = styled.div`
   position: absolute;
   bottom: 15.5%;
-  left: calc(50% - 10.5rem);
+  left: 1em;
   width: 3.2em;
 `;

@@ -1,16 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.darkGray};
-  grid-row: 2 / 3;
-  grid-column: 1 / 2;
-`;
+import React, { useContext } from 'react';
+import { FaPlus, FaBookOpen, FaList, FaPenFancy } from 'react-icons/fa';
+import { Wrapper } from './SideNav.styles';
+import NavItem from '../../molecules/NavItem/NavItem';
+import { StorageContext } from '../../../StorageProvider';
 
 const SideNav = () => {
+  const { handleClear } = useContext(StorageContext);
+
   return (
     <Wrapper>
-      <>Siema</>
+      <NavItem
+        path="/add-word"
+        icon={<FaPlus />}
+        onClick={handleClear}
+        label="Add word"
+      >
+        Add New
+      </NavItem>
+      <NavItem path="/" icon={<FaBookOpen />} label="Home page">
+        Train
+      </NavItem>
+      <NavItem path="/spell-words" icon={<FaPenFancy />} label="Spell words">
+        Write
+      </NavItem>
+      <NavItem path="/word-list" icon={<FaList />} label="Word list">
+        List
+      </NavItem>
     </Wrapper>
   );
 };

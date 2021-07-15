@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
-import { Form, Title } from './AddWords.styles';
-import FormField from '../../molecules/FormField/FormField';
-import IconBtn from '../../atoms/IconBtn/IconBtn';
-import { Input } from '../../atoms/Input/Input';
-import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { StorageContext } from '../../../StorageProvider';
-import { useInfo } from '../../../hooks/useInfo';
-
 import { FaTrash as TrashIcon } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
+import { Form, Title } from './AddWords.styles';
+import FormField from '../../components/molecules/FormField/FormField';
+import IconBtn from '../../components/atoms/IconBtn/IconBtn';
+import { Input } from '../../components/atoms/Input/Input';
+import { ConfirmBtn } from '../../components/atoms/ConfirmBtn/ConfirmBtn';
+import { StorageContext } from '../../StorageProvider';
+import { useInfo } from '../../hooks/useInfo';
 
 const AddWords = () => {
   const { meaning, setMeaning, word, setWord, updateLocal } =

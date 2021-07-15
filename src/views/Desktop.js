@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { useInfo } from '../hooks/useInfo';
 
-import AddWords from '../components/organisms/Add-word/AddWords';
-import WordList from '../components/organisms/Words-list/WordsList';
-import LernWords from '../components/organisms/Learn-words/LernWords';
-import SpellWords from '../components/organisms/Spell-words/SpellWords';
+import AddWords from './Add-word/AddWords';
+import WordList from './Words-list/WordsList';
+import LernWords from './Learn-words/LernWords';
+import SpellWords from './Spell-words/SpellWords';
 import InfoModal from '../components/molecules/InfoModal/InfoModal';
 import SideNav from '../components/organisms/SideNav/SideNav';
 

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import MeaningList from '../../atoms/MeaningList/MeaningList';
-import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper, StyledInput, IconWrapper } from './SpellWords.styles';
 import { FaCheck, FaForward, FaRandom } from 'react-icons/fa';
-import IconBtn from '../../atoms/IconBtn/IconBtn';
-import { StorageContext } from '../../../StorageProvider';
-import useCorrect from '../../../hooks/useCorrect';
+import { Wrapper, StyledInput, IconWrapper } from './SpellWords.styles';
+import MeaningList from '../../components/atoms/MeaningList/MeaningList';
+import IconBtn from '../../components/atoms/IconBtn/IconBtn';
+import { StorageContext } from '../../StorageProvider';
+import { ConfirmBtn } from '../../components/atoms/ConfirmBtn/ConfirmBtn';
+import useCorrect from '../../hooks/useCorrect';
 
 const SpellWords = () => {
   let { lastIndex, changeLastIndex, local, random, changeRandom } =
