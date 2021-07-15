@@ -17,6 +17,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1.2em;
+
   svg {
     height: 1.2em;
     width: auto;

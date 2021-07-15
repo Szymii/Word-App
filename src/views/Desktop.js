@@ -44,6 +44,7 @@ const Desktop = () => {
   return (
     <Wrapper>
       <Title>Word App</Title>
+      <SideNav />
       <ViewWrapper>
         <Switch>
           <Route path="/word-list">
@@ -61,7 +62,6 @@ const Desktop = () => {
         </Switch>
         {info ? <InfoModal info={info} /> : ''}
       </ViewWrapper>
-      <SideNav />
     </Wrapper>
   );
 };

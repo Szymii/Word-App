@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  position: sticky;
-  top: 0;
   height: 2em;
   background-color: ${({ theme }) => theme.colors.darkGray};
   font-size: ${({ theme }) => theme.fontSize.m};

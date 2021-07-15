@@ -5,11 +5,15 @@ import SearchBar from '../../components/molecules/SearchBar/SearchBar';
 import ConfirmModal from '../../components/molecules/ConfirmModal/ConfirmModal';
 import { StyledList } from './WordsList.styles';
 import { StorageContext } from '../../StorageProvider';
+import useDimensions from '../../hooks/useDimensions';
 
 const WordsList = () => {
   const { handleDelete, filtered, phrase } = useContext(StorageContext);
   const [isOpen, setIsOpen] = useState(false);
   const [currentWord, setCurrentWord] = useState('');
+  const { dimensions } = useDimensions();
+  const isMobile = dimensions.width < 860;
+
   const handleModalOpen = (word) => {
     setIsOpen(true);
     setCurrentWord(word);
@@ -19,7 +23,7 @@ const WordsList = () => {
   return (
     <>
       <SearchBar />
-      <StyledList>
+      <StyledList isMobile={isMobile}>
         {filtered.map(({ word, meaning }) => (
           <ListItem
             key={word}

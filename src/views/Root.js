@@ -20,14 +20,7 @@ const Wrapper = styled.div`
 
 function App() {
   const { dimensions } = useDimensions();
-
-  let view;
-
-  if (dimensions.width < 860) {
-    view = <Mobile />;
-  } else {
-    view = <Desktop />;
-  }
+  const view = dimensions.width < 860 ? <Mobile /> : <Desktop />;
 
   return (
     <Router>
