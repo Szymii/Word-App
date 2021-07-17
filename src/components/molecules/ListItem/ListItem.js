@@ -13,10 +13,10 @@ import { FaEdit } from 'react-icons/fa';
 import { StorageContext } from '../../../StorageProvider';
 import { Link } from 'react-router-dom';
 
-const ListItem = ({ word, meaning, onClick, phrase }) => {
+const ListItem = ({ word, onClick, phrase }) => {
   const { handleEdit } = useContext(StorageContext);
   const highlightMatches = () => {
-    return reactStringReplace(word, phrase, (match, i) => {
+    return reactStringReplace(word.word, phrase, (match, i) => {
       return <Highlighted key={i}>{match}</Highlighted>;
     });
   };
@@ -25,17 +25,19 @@ const ListItem = ({ word, meaning, onClick, phrase }) => {
     <StyledLi>
       <Wrapper>
         <PrimaryValue>{highlightMatches()}</PrimaryValue>
-        <SecondaryValue>{meaning.join(', ')}</SecondaryValue>
+        <SecondaryValue>{word.meaning.join(', ')}</SecondaryValue>
       </Wrapper>
-      <IconBtn type="button" onClick={() => onClick(word)} label="delete">
-        <TrashIcon />
-      </IconBtn>
+      {word.id ? (
+        <IconBtn type="button" onClick={() => onClick(word.id)} label="delete">
+          <TrashIcon />
+        </IconBtn>
+      ) : (
+        <IconBtn type="button" label="deleting disable" disabled>
+          <TrashIcon />
+        </IconBtn>
+      )}
       <Link to="/add-word" tabIndex="-1">
-        <IconBtn
-          type="button"
-          onClick={() => handleEdit(word, meaning)}
-          label="edit"
-        >
+        <IconBtn type="button" onClick={() => handleEdit(word)} label="edit">
           <FaEdit />
         </IconBtn>
       </Link>

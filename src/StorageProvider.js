@@ -1,39 +1,72 @@
 import React, { useEffect, useState } from 'react';
+import { useInfo } from './hooks/useInfo';
 
 export const StorageContext = React.createContext({
-  handleEdit: () => {},
   handleClear: () => {},
-  changeLastIndex: () => {},
-  updateLocal: () => {},
+  handleEdit: () => {},
   handleDelete: () => {},
+  getDataFromDB: () => {},
+  changeLastIndex: () => {},
   changeRandom: () => {},
+  local: [
+    {
+      id: null,
+      word: '',
+      meaning: [''],
+    },
+  ],
 });
 
 const initState = [
   {
+    id: null,
     word: 'Add words',
     meaning: ['Add words'],
   },
 ];
 
-const StorageProvider = ({ children }) => {
-  const [meaning, setMeaning] = useState(['']);
-  const [word, setWord] = useState('');
+const emptyState = {
+  id: null,
+  word: '',
+  meaning: [''],
+};
 
+const StorageProvider = ({ children }) => {
+  const [word, setWord] = useState(emptyState);
   const [lastIndex, setLastIndex] = useState(0);
   const [local, setLocal] = useState(initState);
   const [filtered, setFiltered] = useState(initState);
   const [phrase, setPhrase] = useState('');
   const [random, setRandom] = useState(false);
-
-  const handleEdit = (word, meaning) => {
-    setWord(word);
-    setMeaning(meaning);
-  };
+  const { dispatchInfo } = useInfo();
 
   const handleClear = () => {
-    setWord('');
-    setMeaning(['']);
+    setWord(emptyState);
+  };
+
+  const handleEdit = (word) => {
+    setWord(word);
+  };
+
+  const handleDelete = (id) => {
+    const value = [...local].filter((obj) => obj.id !== id);
+
+    const request = indexedDB.open('localDB');
+    request.onerror = (e) => {
+      dispatchInfo(`Indexed DB: ${e.target.error.name}`);
+    };
+
+    request.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction('dictionary', 'readwrite');
+      const store = tx.objectStore('dictionary');
+
+      const request = store.delete(id);
+      request.onsuccess = () => {
+        if (value.length === 0) return setLocal(initState);
+        setLocal(value);
+      };
+    };
   };
 
   const getRandom = () => {
@@ -51,47 +84,70 @@ const StorageProvider = ({ children }) => {
     }
 
     setLastIndex(index);
-    sessionStorage.setItem('index', index);
-  };
-
-  const handleDelete = (word) => {
-    const value = [...local].filter((obj) => obj.word !== word);
-    localStorage.removeItem(word);
-    if (value.length === 0) return setLocal(initState);
-    setLocal(value);
+    sessionStorage.setItem('index', index); //zamiana na local
   };
 
   const changeRandom = () => {
     setRandom(!random);
-    sessionStorage.setItem('random', !random);
+    sessionStorage.setItem('random', !random); //zamiana na local
   };
 
-  const updateLocal = () => {
-    const keys = Object.keys(localStorage);
-    const items = [];
-    keys.forEach((key) => {
-      items.push({
-        word: key,
-        meaning: JSON.parse(localStorage.getItem(key)),
-      });
-    });
-    items.sort((a, b) => a.word.localeCompare(b.word));
-    if (keys.length !== 0) setLocal(items);
-  };
-
-  const getSessionstorage = () => {
+  //zamiana na local
+  const getSessionStorage = () => {
     const index = JSON.parse(sessionStorage.getItem('index'));
     const random = JSON.parse(sessionStorage.getItem('random'));
     if (index) setLastIndex(index);
     if (random) setRandom(random);
   };
 
+  const getDataFromDB = () => {
+    if (!indexedDB) {
+      dispatchInfo('Indexed DB is not supported');
+      return;
+    }
+    const request = indexedDB.open('localDB');
+    request.onerror = (e) => {
+      dispatchInfo(`Indexed DB: ${e.target.error.name}`);
+    };
+
+    request.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      db.createObjectStore('dictionary', {
+        keyPath: 'id',
+      });
+
+      //tu mozna wjebac migratedata
+    };
+
+    request.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction('dictionary');
+      const store = tx.objectStore('dictionary');
+      const request = store.openCursor();
+
+      new Promise((res, rej) => {
+        const value = [];
+        request.onsuccess = (e) => {
+          const cursor = e.target.result;
+          if (cursor) {
+            value.push(cursor.value);
+            cursor.continue();
+          } else {
+            res(value);
+          }
+        };
+      }).then((res) => (res.length > 0 ? setLocal(res) : null));
+    };
+  };
+
   useEffect(() => {
-    updateLocal();
-    getSessionstorage();
+    getSessionStorage();
+    getDataFromDB();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    local.sort((a, b) => a.word.localeCompare(b.word));
     const newArray = local.filter((item) =>
       item.word.toLowerCase().includes(phrase.toLowerCase().trim())
     );
@@ -103,21 +159,21 @@ const StorageProvider = ({ children }) => {
       value={{
         handleEdit,
         handleClear,
-        meaning,
-        setMeaning,
-        word,
-        setWord,
+        handleDelete,
+        getDataFromDB,
+        changeLastIndex,
+        changeRandom,
+
         lastIndex,
         setLastIndex,
-        changeLastIndex,
-        local,
-        updateLocal,
-        handleDelete,
-        random,
-        changeRandom,
         phrase,
         setPhrase,
         filtered,
+        local,
+        random,
+
+        word,
+        setWord,
       }}
     >
       {children}

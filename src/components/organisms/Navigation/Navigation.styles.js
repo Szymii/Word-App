@@ -12,6 +12,7 @@ export const Container = styled.ul`
   width: 3.2em;
 
   button {
+    font-size: ${({ theme }) => theme.fontSize.s};
     width: 4em;
     height: 4em;
     cursor: pointer;
@@ -21,6 +22,11 @@ export const Container = styled.ul`
     border-radius: 50%;
     color: ${({ theme }) => theme.colors.white};
     overflow: hidden;
+
+    & > svg {
+      width: 100%;
+      height: auto;
+    }
   }
   & *:not(:first-child) {
     ${({ collapsed }) =>

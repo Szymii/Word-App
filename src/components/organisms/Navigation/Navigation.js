@@ -31,8 +31,10 @@ const Navigation = () => {
       <StyledListItem>
         <NavBtn path="/word-list" icon={<FaList />} label="Word list" />
       </StyledListItem>
-      <StyledListItem as="button" aria-label="open menu" onClick={openMenu}>
-        <BiMenuAltRight />
+      <StyledListItem>
+        <button aria-label="open menu" onClick={openMenu}>
+          <BiMenuAltRight />
+        </button>
       </StyledListItem>
     </Container>
   );

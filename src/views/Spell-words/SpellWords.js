@@ -10,6 +10,7 @@ import useCorrect from '../../hooks/useCorrect';
 const SpellWords = () => {
   let { lastIndex, changeLastIndex, local, random, changeRandom } =
     useContext(StorageContext);
+
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
   const { answer, checkSpelling, handleInputChange } = useCorrect(word);
 
@@ -60,11 +61,7 @@ const SpellWords = () => {
         </ConfirmBtn>
       </Wrapper>
       <IconWrapper>
-        <IconBtn
-          random={random ? random : null}
-          onClick={changeRandom}
-          label="Random order"
-        >
+        <IconBtn random={random} onClick={changeRandom} label="Random order">
           <FaRandom />
         </IconBtn>
       </IconWrapper>

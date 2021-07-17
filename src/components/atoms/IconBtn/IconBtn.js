@@ -16,6 +16,11 @@ const StyledBtn = styled.button`
     max-width: 5em;
     width: 100%;
   }
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.2;
+  }
 `;
 
 const IconBtn = ({ label, children, ...props }) => {

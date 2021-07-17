@@ -10,13 +10,13 @@ import useDimensions from '../../hooks/useDimensions';
 const WordsList = () => {
   const { handleDelete, filtered, phrase } = useContext(StorageContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [currentWord, setCurrentWord] = useState('');
+  const [wordId, setWordId] = useState('');
   const { dimensions } = useDimensions();
   const isMobile = dimensions.width < 860;
 
-  const handleModalOpen = (word) => {
+  const handleModalOpen = (id) => {
     setIsOpen(true);
-    setCurrentWord(word);
+    setWordId(id);
   };
   const handleModalClose = () => setIsOpen(false);
 
@@ -24,11 +24,10 @@ const WordsList = () => {
     <>
       <SearchBar />
       <StyledList isMobile={isMobile}>
-        {filtered.map(({ word, meaning }) => (
+        {filtered.map((word) => (
           <ListItem
-            key={word}
+            key={word.id}
             word={word}
-            meaning={meaning}
             phrase={phrase}
             onClick={handleModalOpen}
           />
@@ -37,7 +36,7 @@ const WordsList = () => {
       <Modal isOpen={isOpen} handleModalClose={handleModalClose}>
         <ConfirmModal
           handleDelete={handleDelete}
-          currentWord={currentWord}
+          id={wordId}
           handleModalClose={handleModalClose}
         />
       </Modal>

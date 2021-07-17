@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { FaTrash as TrashIcon } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
 import { Form, Title } from './AddWords.styles';
@@ -10,10 +11,11 @@ import { StorageContext } from '../../StorageProvider';
 import { useInfo } from '../../hooks/useInfo';
 
 const AddWords = () => {
-  const { meaning, setMeaning, word, setWord, updateLocal } =
+  const { word, setWord, handleClear, getDataFromDB } =
     useContext(StorageContext);
   const { dispatchInfo } = useInfo();
-  const validate = (word, meaning) => {
+
+  const validate = ({ word, meaning }) => {
     const regex = /(.|\s)*\S/;
     if (!regex.test(word)) return false;
     if (meaning.some((element) => !regex.test(element))) return false;
@@ -21,44 +23,93 @@ const AddWords = () => {
   };
 
   const handleMeaningChange = (e, i) => {
-    const value = [...meaning];
+    const value = [...word.meaning];
     value[i] = e.target.value;
-    setMeaning(value);
+    setWord({ ...word, meaning: value });
   };
 
   const handleWordChange = (e) => {
-    setWord(e.target.value);
+    setWord({ ...word, word: e.target.value });
   };
 
   const handleAdd = () => {
-    if (meaning.length < 3) {
-      const value = [...meaning];
+    if (word.meaning.length < 3) {
+      const value = [...word.meaning];
       value.push('');
-      setMeaning(value);
+      setWord({ ...word, meaning: value });
     }
   };
 
   const handleDelete = (i) => () => {
+    const { meaning } = word;
+
     if (meaning.length > 1) {
       const value = [...meaning];
       value.splice(i, 1);
-      setMeaning(value);
+      setWord({ ...word, meaning: value });
     }
+
     if (meaning.length === 1 && meaning[0] !== '') {
       const value = [...meaning];
       value[i] = '';
-      setMeaning(value);
+      setWord({ ...word, meaning: value });
     }
+  };
+
+  const addDataToDB = () => {
+    const request = indexedDB.open('localDB');
+
+    request.onerror = (e) => {
+      dispatchInfo(`Indexed DB: ${e.target.error.name}`);
+    };
+
+    request.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction('dictionary', 'readwrite');
+      const store = tx.objectStore('dictionary');
+
+      const request = store.add({ ...word, id: uuidv4() });
+      request.onsuccess = () => {
+        handleClear();
+        getDataFromDB();
+        dispatchInfo('Successfully added!');
+      };
+    };
+  };
+
+  const updateData = () => {
+    const request = indexedDB.open('localDB');
+
+    request.onerror = (e) => {
+      dispatchInfo(`Indexed DB: ${e.target.error.name}`);
+    };
+
+    request.onsuccess = (e) => {
+      const db = e.target.result;
+      const tx = db.transaction('dictionary', 'readwrite');
+      const store = tx.objectStore('dictionary');
+
+      const request = store.put(word);
+      request.onsuccess = () => {
+        handleClear();
+        getDataFromDB();
+        dispatchInfo('Successfully updated!');
+      };
+    };
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate(word, meaning)) {
-      localStorage.setItem(word, JSON.stringify(meaning));
-      updateLocal();
-      setMeaning(['']);
-      setWord('');
-      dispatchInfo('Successfully added!');
+    if (!indexedDB) {
+      dispatchInfo('Indexed DB is not supported');
+      return;
+    }
+    if (validate(word)) {
+      if (!word.id) {
+        addDataToDB();
+        return;
+      }
+      updateData();
     } else {
       dispatchInfo('All field are required.');
     }
@@ -71,14 +122,14 @@ const AddWords = () => {
         <FormField>
           <Input
             type="text"
-            value={word}
+            value={word.word}
             name="word"
             onChange={handleWordChange}
           />
         </FormField>
 
         <Title>Meaning:</Title>
-        {meaning.map((value, i) => (
+        {word.meaning.map((value, i) => (
           <FormField key={i}>
             <Input
               type="text"
