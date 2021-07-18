@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useInfo } from './hooks/useInfo';
+import { v4 as uuidv4 } from 'uuid'; //migration
 
 export const StorageContext = React.createContext({
   handleClear: () => {},
@@ -84,15 +85,14 @@ const StorageProvider = ({ children }) => {
     }
 
     setLastIndex(index);
-    sessionStorage.setItem('index', index); //zamiana na local
+    sessionStorage.setItem('index', index);
   };
 
   const changeRandom = () => {
     setRandom(!random);
-    sessionStorage.setItem('random', !random); //zamiana na local
+    sessionStorage.setItem('random', !random);
   };
 
-  //zamiana na local
   const getSessionStorage = () => {
     const index = JSON.parse(sessionStorage.getItem('index'));
     const random = JSON.parse(sessionStorage.getItem('random'));
@@ -112,11 +112,30 @@ const StorageProvider = ({ children }) => {
 
     request.onupgradeneeded = (e) => {
       const db = e.target.result;
-      db.createObjectStore('dictionary', {
+      const objectStore = db.createObjectStore('dictionary', {
         keyPath: 'id',
       });
 
-      //tu mozna wjebac migratedata
+      /* migration start */
+      const keys = Object.keys(localStorage);
+      const items = [];
+      keys.forEach((key) => {
+        items.push({
+          word: key,
+          meaning: JSON.parse(localStorage.getItem(key)),
+        });
+      });
+
+      objectStore.transaction.oncomplete = () => {
+        const tx = db.transaction('dictionary', 'readwrite');
+        const store = tx.objectStore('dictionary');
+
+        items.forEach((item) => {
+          store.add({ ...item, id: uuidv4() });
+        });
+      };
+
+      /* migration end */
     };
 
     request.onsuccess = (e) => {
