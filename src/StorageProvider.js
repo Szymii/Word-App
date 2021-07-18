@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useInfo } from './hooks/useInfo';
-import { v4 as uuidv4 } from 'uuid'; //migration
 
 export const StorageContext = React.createContext({
   handleClear: () => {},
@@ -112,30 +111,9 @@ const StorageProvider = ({ children }) => {
 
     request.onupgradeneeded = (e) => {
       const db = e.target.result;
-      const objectStore = db.createObjectStore('dictionary', {
+      db.createObjectStore('dictionary', {
         keyPath: 'id',
       });
-
-      /* migration start */
-      const keys = Object.keys(localStorage);
-      const items = [];
-      keys.forEach((key) => {
-        items.push({
-          word: key,
-          meaning: JSON.parse(localStorage.getItem(key)),
-        });
-      });
-
-      objectStore.transaction.oncomplete = () => {
-        const tx = db.transaction('dictionary', 'readwrite');
-        const store = tx.objectStore('dictionary');
-
-        items.forEach((item) => {
-          store.add({ ...item, id: uuidv4() });
-        });
-      };
-
-      /* migration end */
     };
 
     request.onsuccess = (e) => {
@@ -162,6 +140,7 @@ const StorageProvider = ({ children }) => {
   useEffect(() => {
     getSessionStorage();
     getDataFromDB();
+    localStorage.clear();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
