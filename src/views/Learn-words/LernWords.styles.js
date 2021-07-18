@@ -13,12 +13,13 @@ export const Wrapper = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin: 1.2em 0;
   }
 `;
 
 export const IconWrapper = styled.div`
   position: absolute;
   bottom: 15.5%;
-  left: calc(50% - 10.5rem);
+  left: 1em;
   width: 3.2em;
 `;

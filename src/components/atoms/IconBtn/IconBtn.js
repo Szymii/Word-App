@@ -11,10 +11,15 @@ const StyledBtn = styled.button`
   color: ${({ random, theme }) =>
     random ? theme.colors.blue : theme.colors.white};
   cursor: pointer;
-  svg {
+  & > svg {
     height: 100%;
     max-width: 5em;
     width: 100%;
+  }
+
+  &:disabled {
+    cursor: auto;
+    opacity: 0.2;
   }
 `;
 

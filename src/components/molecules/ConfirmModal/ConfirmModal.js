@@ -3,11 +3,12 @@ import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
 import { TitleWrapper, ButtonWrapper } from './ConfirmModal.styles';
 import { FaTrash } from 'react-icons/fa';
 
-const ConfirmModal = ({ handleModalClose, handleDelete, currentWord }) => {
+const ConfirmModal = ({ handleModalClose, handleDelete, id }) => {
   const handleConfirm = () => {
     handleModalClose();
-    handleDelete(currentWord);
+    handleDelete(id);
   };
+
   return (
     <>
       <TitleWrapper>

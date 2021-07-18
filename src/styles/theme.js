@@ -1,11 +1,11 @@
 export const theme = {
   colors: {
+    pureBlack: '#000000',
     black: '#171717',
     white: '#FFFFFF',
-    gray: '#333333',
-    lightGray: '#5B5B5B',
+    darkGray: '#1C1C1C',
+    gray: '#2B3031',
     blue: '#0B9FCE',
-    unactive: '#1C1C1C',
     correct: '#00C508',
     wrong: '#C61515',
   },

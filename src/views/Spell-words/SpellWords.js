@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
-import MeaningList from '../../atoms/MeaningList/MeaningList';
-import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper, StyledInput, IconWrapper } from './SpellWords.styles';
 import { FaCheck, FaForward, FaRandom } from 'react-icons/fa';
-import IconBtn from '../../atoms/IconBtn/IconBtn';
-import { StorageContext } from '../../../StorageProvider';
-import useCorrect from '../../../hooks/useCorrect';
+import { Wrapper, StyledInput, IconWrapper } from './SpellWords.styles';
+import MeaningList from '../../components/atoms/MeaningList/MeaningList';
+import IconBtn from '../../components/atoms/IconBtn/IconBtn';
+import { StorageContext } from '../../StorageProvider';
+import { ConfirmBtn } from '../../components/atoms/ConfirmBtn/ConfirmBtn';
+import useCorrect from '../../hooks/useCorrect';
 
 const SpellWords = () => {
   let { lastIndex, changeLastIndex, local, random, changeRandom } =
     useContext(StorageContext);
+
   const { word, meaning } = local[local.length - 1 < lastIndex ? 0 : lastIndex];
   const { answer, checkSpelling, handleInputChange } = useCorrect(word);
 
@@ -60,11 +61,7 @@ const SpellWords = () => {
         </ConfirmBtn>
       </Wrapper>
       <IconWrapper>
-        <IconBtn
-          random={random ? random : null}
-          onClick={changeRandom}
-          label="Random order"
-        >
+        <IconBtn random={random} onClick={changeRandom} label="Random order">
           <FaRandom />
         </IconBtn>
       </IconWrapper>

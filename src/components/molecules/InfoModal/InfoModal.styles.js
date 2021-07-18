@@ -17,7 +17,8 @@ export const ModalWrapper = styled.div`
   color: ${({ theme }) => theme.colors.white};
   top: 0;
   left: 50%;
-  transform: translateX(-50%) translateY(3.2em);
+  transform: translateX(-50%)
+    ${({ isMobile }) => (isMobile ? 'translateY(2.6em)' : 'translateY(0.5em)')};
   border: solid 0.05em ${({ theme }) => theme.colors.blue};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: bold;

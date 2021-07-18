@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import MeaningList from '../../atoms/MeaningList/MeaningList';
-import { ConfirmBtn } from '../../atoms/ConfirmBtn/ConfirmBtn';
-import { Wrapper, IconWrapper } from './LernWords.styles';
 import { FaForward, FaRandom } from 'react-icons/fa';
-
-import { StorageContext } from '../../../StorageProvider';
-import IconBtn from '../../atoms/IconBtn/IconBtn';
+import { Wrapper, IconWrapper } from './LernWords.styles';
+import MeaningList from '../../components/atoms/MeaningList/MeaningList';
+import IconBtn from '../../components/atoms/IconBtn/IconBtn';
+import { ConfirmBtn } from '../../components/atoms/ConfirmBtn/ConfirmBtn';
+import { StorageContext } from '../../StorageProvider';
 
 const LernWords = () => {
   let { lastIndex, changeLastIndex, local, random, changeRandom } =
